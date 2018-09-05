@@ -15,7 +15,7 @@
   "scripts": {
     "build": "ember build",
     "changelog": "lerna-changelog",
-    "lint": "eslint app addon blueprints config server test-support tests *.js",
+    "lint": "eslint .",
     "start": "ember server",
     "test": "npm run test:keep && npm run test:strip",
     "test:all": "ember try:each",
