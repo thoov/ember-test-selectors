@@ -15,7 +15,7 @@
   "scripts": {
     "build": "ember build",
     "changelog": "lerna-changelog",
-    "lint": "eslint app addon blueprints config server test-support tests *.js",
+    "lint": "eslint .",
     "start": "ember server",
     "test": "npm run test:keep && npm run test:strip",
     "test:all": "ember try:each",
@@ -43,7 +43,7 @@
     "ember-source": "~3.4.0",
     "ember-source-channel-url": "^1.0.1",
     "ember-try": "^1.0.0",
-    "eslint": "^4.2.0",
+    "eslint": "^5.5.0",
     "eslint-config-simplabs": "^0.4.0",
     "eslint-plugin-ember": "^5.2.0",
     "eslint-plugin-qunit": "^3.2.0",
