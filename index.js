@@ -70,7 +70,7 @@ module.exports = {
         app.options.babel = app.options.babel || {};
         app.options.babel.plugins = app.options.babel.plugins || [];
         app.options.babel.plugins.push(require('./strip-data-test-properties-plugin'));
-      } else if (checker.satisfies('^6.0.0-beta.1')) {
+      } else if (checker.satisfies('^6.0.0-beta.1') || checker.satisfies('^7.0.0')) {
         app.options.babel6 = app.options.babel6 || {};
         app.options.babel6.plugins = app.options.babel6.plugins || [];
         app.options.babel6.plugins.push(require('./strip-data-test-properties-plugin6'));
