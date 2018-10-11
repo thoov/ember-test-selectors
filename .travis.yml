@@ -11,14 +11,14 @@ branches:
   - /^dependabot\/.*$/
 
 cache:
-  directories:
-    - $HOME/.npm
+  yarn: true
 
 before_install:
-  - npm config set spin false
+  - curl -o- -L https://yarnpkg.com/install.sh | bash
+  - export PATH=$HOME/.yarn/bin:$PATH
 
 install:
-  - npm install
+  - yarn install --no-lockfile
 
 jobs:
   include:
@@ -32,7 +32,7 @@ jobs:
     script:
       # Usually, it's ok to finish the test scenario without reverting
       #  to the addon's original dependency state, skipping "cleanup".
-      - npm run test:all -- --skip-cleanup
+      - yarn test:all --skip-cleanup
 
   - <<: *ember-test
     env: TEST_SUITE=test:keep     # used only to make Travis UI show description
@@ -41,14 +41,14 @@ jobs:
     env: NAME=lint          # used only to make Travis UI show description
 
     script:
-      - npm run lint
+      - yarn lint
 
   - &node-test
     stage: test
     env: NAME=node-tests    # used only to make Travis UI show description
 
     script:
-      - npm run test:node
+      - yarn test:node
 
   - <<: *node-test
     node_js: 8
