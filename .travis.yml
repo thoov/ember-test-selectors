@@ -1,7 +1,7 @@
 ---
 language: node_js
 node_js:
-  - "6"
+  - "10"
 
 sudo: false
 dist: trusty
@@ -54,7 +54,7 @@ jobs:
     node_js: 8
 
   - <<: *node-test
-    node_js: 10
+    node_js: 6
 
 
 deploy:
