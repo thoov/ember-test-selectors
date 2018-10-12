@@ -11,7 +11,8 @@ module.exports = function() {
     getChannelURL('canary'),
   ]).then((urls) => {
     return {
-      command: 'npm test',
+      useYarn: true,
+      command: process.env.TEST_SUITE ? `yarn ${process.env.TEST_SUITE}` : 'yarn test',
       useVersionCompatibility: true,
       scenarios: [
         {
