@@ -10,12 +10,9 @@ branches:
   except:
   - /^dependabot\/.*$/
 
-addons:
-  chrome: stable
-
 cache:
   directories:
-     - $HOME/.npm
+    - $HOME/.npm
 
 before_install:
   - npm config set spin false
@@ -23,12 +20,42 @@ before_install:
 install:
   - npm install
 
-script:
-  # Usually, it's ok to finish the test scenario without reverting
-  #  to the addon's original dependency state, skipping "cleanup".
-  - npm run test:all -- --skip-cleanup
-  - npm run test:node
-  - npm run lint
+jobs:
+  include:
+  - &ember-test
+    stage: test
+    env: TEST_SUITE=test:strip      # used only to make Travis UI show description
+
+    addons:
+      chrome: stable
+
+    script:
+      # Usually, it's ok to finish the test scenario without reverting
+      #  to the addon's original dependency state, skipping "cleanup".
+      - npm run test:all -- --skip-cleanup
+
+  - <<: *ember-test
+    env: TEST_SUITE=test:keep     # used only to make Travis UI show description
+
+  - stage: test
+    env: NAME=lint          # used only to make Travis UI show description
+
+    script:
+      - npm run lint
+
+  - &node-test
+    stage: test
+    env: NAME=node-tests    # used only to make Travis UI show description
+
+    script:
+      - npm run test:node
+
+  - <<: *node-test
+    node_js: 8
+
+  - <<: *node-test
+    node_js: 10
+
 
 deploy:
   provider: npm

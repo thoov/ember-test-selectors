@@ -11,7 +11,7 @@ module.exports = function() {
     getChannelURL('canary'),
   ]).then((urls) => {
     return {
-      command: 'npm test',
+      command: process.env.TEST_SUITE ? `npm ${process.env.TEST_SUITE}` : 'npm test',
       useVersionCompatibility: true,
       scenarios: [
         {
