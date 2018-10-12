@@ -1,4 +1,4 @@
-import { assert, warn } from '@ember/debug';
+import { assert } from '@ember/debug';
 import { isArray } from '@ember/array';
 
 const TEST_SELECTOR_PREFIX = /data-test-.*/;
@@ -40,7 +40,7 @@ export default function bindDataTestAttributes(component) {
     let message = `ember-test-selectors could not bind data-test-* properties on ${component} ` +
       `automatically because "attributeBindings" is a read-only property.`;
 
-    warn(message, false, {
+    assert(message, false, {
       id: 'ember-test-selectors.computed-attribute-bindings',
     });
   }

@@ -96,7 +96,7 @@ test('it does not add a data-test property', function(assert) {
   assert.deepEqual(instance.get('attributeBindings'), undefined);
 });
 
-test('it skips if attributeBindings is a computed property', function(assert) {
+test('it breaks if attributeBindings is a computed property', function(assert) {
   let Fixture = EmberObject.extend({
     attributeBindings: computed('prop', function() {
       return [this.get('prop')];
@@ -112,11 +112,7 @@ test('it skips if attributeBindings is a computed property', function(assert) {
     'data-test-from-invocation': 'bar',
   });
 
-  assert.deepEqual(instance.get('attributeBindings'), ['foo']);
-
-  bindDataTestAttributes(instance);
-
-  assert.deepEqual(instance.get('attributeBindings'), ['foo']);
+  assert.throws(() => bindDataTestAttributes(instance));
 });
 
 test('it breaks if tagName is empty', function(assert) {
