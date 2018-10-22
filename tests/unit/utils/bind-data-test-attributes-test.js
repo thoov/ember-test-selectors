@@ -1,5 +1,7 @@
 import { module, test } from 'qunit';
 import EmberObject, { computed } from '@ember/object';
+import EmberMixin from '@ember/object/mixin';
+import { dasherize } from '@ember/string';
 
 import bindDataTestAttributes from 'ember-test-selectors/utils/bind-data-test-attributes';
 
@@ -126,3 +128,49 @@ test('it breaks if tagName is empty', function(assert) {
 
   assert.throws(() => bindDataTestAttributes(instance));
 });
+
+test('issue #106', function(assert) {
+  let Component = EmberObject.extend({});
+
+  Component.reopen({
+    init() {
+      this._super(...arguments);
+      bindDataTestAttributes(this);
+    },
+  });
+
+  let Mixin = EmberMixin.create({
+    init() {
+      this._super(...arguments);
+
+      if (this.tagName !== '') {
+        let componentName = dasherize(this._XXXdebugContainerKey.replace(/\//g, '-').split(':')[1]);
+        this.set('data-test-component', componentName);
+
+        let dataTestAttr = ['data-test-component'];
+        this.attributeBindings = this.attributeBindings ? this.attributeBindings.concat(dataTestAttr) : dataTestAttr;
+      }
+    },
+  });
+
+  Component.reopen(Mixin);
+
+  let Fixture1 = Component.extend({
+    _XXXdebugContainerKey: 'component:fixture1',
+    tagName: 'span',
+  });
+
+  let fixture1 = Fixture1.create();
+
+  assert.strictEqual(fixture1.get('data-test-component'), 'fixture1');
+
+  let Fixture2 = Component.extend({
+    _XXXdebugContainerKey: 'component:fixture2',
+    tagName: '',
+  });
+
+  let fixture2 = Fixture2.create();
+
+  assert.strictEqual(fixture2.get('data-test-component'), undefined);
+});
+
