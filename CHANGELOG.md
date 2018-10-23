@@ -1,5 +1,25 @@
 # Changelog
 
+## v2.0.0 (2018-10-23)
+
+#### :boom: Breaking Change
+* [#254](https://github.com/simplabs/ember-test-selectors/pull/254) Use `assert()` for "read-only attributeBindings" warning ([@Turbo87](https://github.com/Turbo87))
+* [#205](https://github.com/simplabs/ember-test-selectors/pull/205) utils/bind-data-test-attributes: Handle failing `set()`  with assert instead of warning  ([@mathieupoteriepeopledoc](https://github.com/mathieupoteriepeopledoc))
+
+#### :rocket: Enhancement
+* [#237](https://github.com/simplabs/ember-test-selectors/pull/237) Add support for Babel 7 ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#261](https://github.com/simplabs/ember-test-selectors/pull/261) Add test for #106 ([@Turbo87](https://github.com/Turbo87))
+* [#255](https://github.com/simplabs/ember-test-selectors/pull/255) yarn: Add `integrity` hashes ([@Turbo87](https://github.com/Turbo87))
+* [#248](https://github.com/simplabs/ember-test-selectors/pull/248) CI: Split CI tasks into multiple jobs ([@Turbo87](https://github.com/Turbo87))
+* [#225](https://github.com/simplabs/ember-test-selectors/pull/225) Remove unused `ember-cli-shims` dependency ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- [@mathieupoteriepeopledoc](https://github.com/mathieupoteriepeopledoc)
+
+
 ## v1.0.0 (2018-04-26)
 
 #### :boom: Breaking Change
