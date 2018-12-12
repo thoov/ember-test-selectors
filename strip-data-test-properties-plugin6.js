@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-let TEST_SELECTOR_PREFIX = /data-test-.*/;
+let TEST_SELECTOR_PREFIX = /^data-test-.*/;
 
 function StripDataTestPropertiesPlugin() {
   return {

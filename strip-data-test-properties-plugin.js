@@ -2,7 +2,7 @@
 
 /* eslint-env node */
 
-let TEST_SELECTOR_PREFIX = /data-test-.*/;
+let TEST_SELECTOR_PREFIX = /^data-test-.*/;
 
 function StripDataTestPropertiesPlugin(babel) {
   return new babel.Plugin('ember-test-selectors', {
