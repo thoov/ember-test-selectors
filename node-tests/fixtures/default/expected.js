@@ -12,6 +12,7 @@ var _ember2 = _interopRequireDefault(_ember);
 
 exports['default'] = _ember2['default'].Component.extend({
   foo: 'foo',
-  'data-test': 'test'
+  'data-test': 'test',
+  'metadata-test-foo': 'metadata'
 });
 module.exports = exports['default'];
