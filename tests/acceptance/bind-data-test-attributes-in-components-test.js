@@ -67,4 +67,9 @@ if (!config.stripTestSelectors) {
   test('it transforms data-test params to hash pairs on components', function(assert) {
     assert.dom('.test11 div[data-test-something]').exists('data-test-something exists');
   });
+
+  test('it binds data-test attributes on {{link-to}} components', function(assert) {
+    assert.dom('.test-link-to-block a').hasAttribute('data-test-foo', 'bar');
+    assert.dom('.test-link-to-inline a').hasAttribute('data-test-foo', 'bar');
+  });
 }
