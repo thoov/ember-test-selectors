@@ -72,4 +72,9 @@ if (!config.stripTestSelectors) {
     assert.dom('.test-link-to-block a').hasAttribute('data-test-foo', 'bar');
     assert.dom('.test-link-to-inline a').hasAttribute('data-test-foo', 'bar');
   });
+
+  test('it handles the tagless components without assert when `supportsDataTestProperties` is set', function(assert) {
+    assert.dom('.test12 div[data-test-with-boolean-value]').doesNotExist('data-test-with-boolean-value does not exist');
+    assert.dom('.test13 div[data-test-without-value]').doesNotExist('data-test-without-value does not exist');
+  });
 }
