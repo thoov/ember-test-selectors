@@ -3,6 +3,7 @@
 /* eslint-env node */
 
 const VersionChecker = require('ember-cli-version-checker');
+const cacheKeyForTree = require('calculate-cache-key-for-tree');
 
 module.exports = {
   name: 'ember-test-selectors',
@@ -71,6 +72,15 @@ module.exports = {
 
     if (!this._stripTestSelectors) {
       this.app.import('vendor/ember-test-selectors/patch-component.js');
+    }
+  },
+
+  cacheKeyForTree(treeType) {
+    // ensure our treeForAddon is memoized
+    if (treeType === 'addon') {
+      return cacheKeyForTree('addon', this, [this._stripTestSelectors]);
+    } else {
+      return cacheKeyForTree(treeType, this);
     }
   },
 
