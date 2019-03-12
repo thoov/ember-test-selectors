@@ -60,7 +60,7 @@ module.exports = {
       } else if (checker.satisfies('^6.0.0-beta.1') || checker.satisfies('^7.0.0')) {
         app.options.babel6 = app.options.babel6 || {};
         app.options.babel6.plugins = app.options.babel6.plugins || [];
-        app.options.babel6.plugins.push(require('./strip-data-test-properties-plugin6'));
+        app.options.babel6.plugins.push(require.resolve('./strip-data-test-properties-plugin6'));
       } else {
         this.ui.writeWarnLine('ember-test-selectors: You are using an unsupported ember-cli-babel version. data-test ' +
           'properties are not automatically stripped from your JS code.');
