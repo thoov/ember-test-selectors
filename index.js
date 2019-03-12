@@ -30,25 +30,16 @@ module.exports = {
     if (type === 'parent') {
       this._assignOptions(this.app);
 
-      if (this._stripTestSelectors) {
-        let StripTestSelectorsTransform = require('./strip-test-selectors');
+      let pluginFnName = this._stripTestSelectors ? '_buildStripPlugin' : '_buildHashParamPlugin';
 
-        registry.add('htmlbars-ast-plugin', {
-          name: 'strip-test-selectors',
-          plugin: StripTestSelectorsTransform,
-          baseDir() { return __dirname; },
-          cacheKey() { return 'strip-test-selectors'; },
-        });
-      } else {
-        let TransformTestSelectorParamsToHashPairs = require('./transform-test-selector-params-to-hash-pairs');
+      let plugin = this[pluginFnName]();
+      plugin.parallelBabel = {
+        requireFile: __filename,
+        buildUsing: pluginFnName,
+        params: {},
+      };
 
-        registry.add('htmlbars-ast-plugin', {
-          name: 'transform-test-selector-params-to-hash-pairs',
-          plugin: TransformTestSelectorParamsToHashPairs,
-          baseDir() { return __dirname; },
-          cacheKey() { return 'transform-test-selector-params-to-hash-pairs'; },
-        });
-      }
+      registry.add('htmlbars-ast-plugin', plugin);
     }
   },
 
@@ -98,5 +89,27 @@ module.exports = {
       tree = require('broccoli-stew').rm(tree, 'dummy/tests/unit/**/*.js');
     }
     return tree;
+  },
+
+  _buildStripPlugin() {
+    let StripTestSelectorsTransform = require('./strip-test-selectors');
+
+    return {
+      name: 'strip-test-selectors',
+      plugin: StripTestSelectorsTransform,
+      baseDir() { return __dirname; },
+      cacheKey() { return 'strip-test-selectors'; },
+    };
+  },
+
+  _buildHashParamPlugin() {
+    let TransformTestSelectorParamsToHashPairs = require('./transform-test-selector-params-to-hash-pairs');
+
+    return {
+      name: 'transform-test-selector-params-to-hash-pairs',
+      plugin: TransformTestSelectorParamsToHashPairs,
+      baseDir() { return __dirname; },
+      cacheKey() { return 'transform-test-selector-params-to-hash-pairs'; },
+    };
   },
 };
