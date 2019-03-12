@@ -50,9 +50,6 @@ jobs:
   - <<: *node-test
     node_js: 8
 
-  - <<: *node-test
-    node_js: 6
-
 
 deploy:
   provider: npm
