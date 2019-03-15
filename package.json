@@ -70,7 +70,7 @@
   "ember-addon": {
     "configPath": "tests/dummy/config",
     "versionCompatibility": {
-      "ember": ">=1.11"
+      "ember": ">=2.12"
     }
   },
   "greenkeeper": {
