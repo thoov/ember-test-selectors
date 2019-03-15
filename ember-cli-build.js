@@ -8,6 +8,10 @@ module.exports = function(defaults) {
   let stripTestSelectors = process.env['STRIP_TEST_SELECTORS'];
 
   let app = new EmberAddon(defaults, {
+    'ember-cli-babel': {
+      throwUnlessParallelizable: true,
+    },
+
     'ember-test-selectors': {
       strip: Boolean(stripTestSelectors)
     }
