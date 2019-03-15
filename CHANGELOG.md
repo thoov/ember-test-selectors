@@ -1,5 +1,23 @@
 # Changelog
 
+## v2.1.0 (2019-03-15)
+
+#### :rocket: Enhancement
+* [#323](https://github.com/simplabs/ember-test-selectors/pull/323) Handle components with empty tag name ([@ssutar](https://github.com/ssutar))
+
+#### :bug: Bug Fix
+* [#292](https://github.com/simplabs/ember-test-selectors/pull/292) Only strip attribute *starting* with `data-test-` ([@bendemboski](https://github.com/bendemboski))
+
+#### :house: Internal
+* [#315](https://github.com/simplabs/ember-test-selectors/pull/315) tests: Check that `link-to` bindings work properly ([@Turbo87](https://github.com/Turbo87))
+* [#285](https://github.com/simplabs/ember-test-selectors/pull/285) TravisCI: Remove deprecated `sudo: false` option ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 3
+- Ben Demboski ([@bendemboski](https://github.com/bendemboski))
+- Santosh Sutar ([@ssutar](https://github.com/ssutar))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v2.0.0 (2018-10-23)
 
 #### :boom: Breaking Change
