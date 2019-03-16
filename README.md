@@ -33,6 +33,7 @@ More information on why that is useful are available on our
 Compatibility
 ------------------------------------------------------------------------------
 
+- Ember 2.16 or above
 - Ember CLI 2.14 or above
 
 
