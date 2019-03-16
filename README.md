@@ -35,6 +35,7 @@ Compatibility
 
 - Ember 2.16 or above
 - Ember CLI 2.14 or above
+- Node.js 8 or above
 
 
 Installation
