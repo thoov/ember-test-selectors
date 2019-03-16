@@ -1,5 +1,34 @@
 # Changelog
 
+## v3.0.0-beta.1 (2019-03-16)
+
+#### :boom: Breaking Change
+
+The main breaking changes in this major release are dropping support for older
+Ember.js, Ember CLI and Node.js versions. The v3.x series will have the
+following minimum requirements:
+
+- Ember.js 2.16 or above
+- Ember CLI 2.14 or above
+- Node.js 8 or above 
+
+* [#341](https://github.com/simplabs/ember-test-selectors/pull/341) Adjust Ember.js support range to 2.16+ ([@Turbo87](https://github.com/Turbo87))
+* [#338](https://github.com/simplabs/ember-test-selectors/pull/338) Use `setupPreprocessorRegistry()` hook to register HTMLBars AST plugin ([@Turbo87](https://github.com/Turbo87))
+* [#337](https://github.com/simplabs/ember-test-selectors/pull/337) Drop support for Node.js 4 and 6 ([@Turbo87](https://github.com/Turbo87))
+
+#### :rocket: Enhancement
+* [#339](https://github.com/simplabs/ember-test-selectors/pull/339) Enable parallel file processing for `ember-cli-babel` ([@Turbo87](https://github.com/Turbo87))
+
+#### :memo: Documentation
+* [#342](https://github.com/simplabs/ember-test-selectors/pull/342) README: Add Node.js compatibility information ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#340](https://github.com/simplabs/ember-test-selectors/pull/340) Adjust `.npmignore` blacklist ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v2.1.0 (2019-03-15)
 
 #### :rocket: Enhancement
