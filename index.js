@@ -27,25 +27,28 @@ module.exports = {
     }
   },
 
-  setupPreprocessorRegistry(type, registry) {
-    if (type === 'parent') {
-      this._assignOptions(this.app);
+  _setupPreprocessorRegistry(registry) {
+    let pluginFnName = this._stripTestSelectors ? '_buildStripPlugin' : '_buildHashParamPlugin';
 
-      let pluginFnName = this._stripTestSelectors ? '_buildStripPlugin' : '_buildHashParamPlugin';
+    let plugin = this[pluginFnName]();
+    plugin.parallelBabel = {
+      requireFile: __filename,
+      buildUsing: pluginFnName,
+      params: {},
+    };
 
-      let plugin = this[pluginFnName]();
-      plugin.parallelBabel = {
-        requireFile: __filename,
-        buildUsing: pluginFnName,
-        params: {},
-      };
-
-      registry.add('htmlbars-ast-plugin', plugin);
-    }
+    registry.add('htmlbars-ast-plugin', plugin);
   },
 
   included(app) {
     this._super.included.apply(this, arguments);
+
+    let host = this._findHost();
+    this._assignOptions(host);
+
+    // we can't use the setupPreprocessorRegistry() hook as it is called too
+    // early and we do not have reliable access to `app.tests` there yet
+    this._setupPreprocessorRegistry(app.registry);
 
     // add the StripDataTestPropertiesPlugin to the list of plugins used by
     // the `ember-cli-babel` addon
@@ -71,7 +74,7 @@ module.exports = {
     }
 
     if (!this._stripTestSelectors) {
-      this.app.import('vendor/ember-test-selectors/patch-component.js');
+      host.import('vendor/ember-test-selectors/patch-component.js');
     }
   },
 
