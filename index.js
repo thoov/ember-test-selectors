@@ -40,7 +40,7 @@ module.exports = {
     registry.add('htmlbars-ast-plugin', plugin);
   },
 
-  included(app) {
+  included(appOrParent) {
     this._super.included.apply(this, arguments);
 
     let host = this._findHost();
@@ -48,23 +48,23 @@ module.exports = {
 
     // we can't use the setupPreprocessorRegistry() hook as it is called too
     // early and we do not have reliable access to `app.tests` there yet
-    this._setupPreprocessorRegistry(app.registry);
+    this._setupPreprocessorRegistry(appOrParent.registry);
 
     // add the StripDataTestPropertiesPlugin to the list of plugins used by
     // the `ember-cli-babel` addon
     if (this._stripTestSelectors && !this._registeredWithBabel) {
       let checker = new VersionChecker(this.parent).for('ember-cli-babel', 'npm');
 
-      app.options = app.options || {};
+      appOrParent.options = appOrParent.options || {};
 
       if (checker.satisfies('^5.0.0')) {
-        app.options.babel = app.options.babel || {};
-        app.options.babel.plugins = app.options.babel.plugins || [];
-        app.options.babel.plugins.push(require('./strip-data-test-properties-plugin'));
+        appOrParent.options.babel = appOrParent.options.babel || {};
+        appOrParent.options.babel.plugins = appOrParent.options.babel.plugins || [];
+        appOrParent.options.babel.plugins.push(require('./strip-data-test-properties-plugin'));
       } else if (checker.satisfies('^6.0.0-beta.1') || checker.satisfies('^7.0.0')) {
-        app.options.babel6 = app.options.babel6 || {};
-        app.options.babel6.plugins = app.options.babel6.plugins || [];
-        app.options.babel6.plugins.push(require.resolve('./strip-data-test-properties-plugin6'));
+        appOrParent.options.babel6 = appOrParent.options.babel6 || {};
+        appOrParent.options.babel6.plugins = appOrParent.options.babel6.plugins || [];
+        appOrParent.options.babel6.plugins.push(require.resolve('./strip-data-test-properties-plugin6'));
       } else {
         this.ui.writeWarnLine('ember-test-selectors: You are using an unsupported ember-cli-babel version. data-test ' +
           'properties are not automatically stripped from your JS code.');
