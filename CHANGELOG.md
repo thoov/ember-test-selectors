@@ -1,5 +1,18 @@
 # Changelog
 
+## v3.0.0-beta.2 (2019-04-18)
+
+#### :rocket: Enhancement
+* [#322](https://github.com/simplabs/ember-test-selectors/pull/322) ensure custom tree is still memoized ([@stefanpenner](https://github.com/stefanpenner))
+
+#### :bug: Bug Fix
+* [#359](https://github.com/simplabs/ember-test-selectors/pull/359) Revert "Use `setupPreprocessorRegistry()` hook to register HTMLBars AST plugin" ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Stefan Penner ([@stefanpenner](https://github.com/stefanpenner))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v3.0.0-beta.1 (2019-03-16)
 
 #### :boom: Breaking Change
