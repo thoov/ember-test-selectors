@@ -4,6 +4,10 @@ module.exports = {
     'simplabs',
     'simplabs/plugins/ember',
   ],
+  rules: {
+    'ember/avoid-leaking-state-in-components': 'off',
+    'ember/local-modules': 'off',
+  },
   overrides: [
     // node files
     {
