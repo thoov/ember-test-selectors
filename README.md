@@ -54,160 +54,55 @@ automatically removed from `production` builds:
 
 ```hbs
 <article>
-  <h1 data-test-post-title data-test-resource-id="{{post.id}}">{{post.title}}</h1>
+  <h1 data-test-post-title data-test-resource-id={{post.id}}>{{post.title}}</h1>
   <p>{{post.body}}</p>
+  <button data-test-like-button>Like</button>
 </article>
 ```
 
-Once you've done that you can use attribute selectors to look up the elements:
+Once you've done that you can use attribute selectors to look up and interact
+with those elements:
 
 ```js
-// in Acceptance Tests:
+assert.dom('[data-test-post-title]').hasText('Ember is great!');
 
-find('[data-test-post-title]')
-find('[data-test-resource-id="2"]')
-
-// in Component Integration Tests:
-
-this.$('[data-test-post-title]').click()
-this.$('[data-test-resource-id="2"]').click()
+await click('[data-test-like-button]');
 ```
 
-### Usage in Components
+### Usage with Components
 
-You can also use `data-test-*` attributes on components:
-
-```handlebars
-{{comments-list data-test-comments-for=post.id}}
-```
-
-These `data-test-*` attributes will be bound automatically and available
-as data attributes on the `<div>` wrapping the component template:
-
-```html
-<div id="ember123" data-test-comments-for="42">
-  <!-- comments -->
-</div>
-```
-
-You can also use boolean attributes, but make sure it is the first parameter
-as this makes use of Ember's positional params system.
-
-```handlebars
-{{! valid }}
-{{comments-list data-test-comments post=post}}
-
-{{! compiler error }}
-{{comments-list post=post data-test-comments}}
-```
-
-### Usage in Computed Properties
-
-Instead of assigning `data-test-comment-id` in this example template:
-
-```handlebars
-{{#each comments as |comment|}}
-  {{comment-list-item comment=comment data-test-comment-id=comment.id}}
-{{/each}}
-```
-
-you may also use computed properties on the component:
-
-```js
-export default Ember.Component({
-  comment: null,
-  'data-test-comment-id': Ember.computed.readOnly('comment.id'),
-});
-```
-
-As with `data-test-*` attributes in the templates, these properties, whether
-computed or not, will be removed automatically in production builds.
-
-### Usage with tagless components
-
-Since tagless components do not have a root element, `data-test-*` attributes
-passed to them cannot be bound to the DOM. If you try to pass a `data-test-*`
-attribute to a tagless component, or define one in its Javascript class,
-`ember-test-selectors` will throw an assertion error.
-
-However, there are some cases where you might want to pass a `data-test-*`
-attribute to a tagless component, for example a tagless wrapper component:
-
-```js
-// comment-wrapper.js
-export default Ember.Component({
-  tagName: ''
-});
-```
+You can use the same syntax also for component invocations:
 
 ```hbs
-{{!-- comment-wrapper.hbs --}}
-Comment:
-{{comment-list-item comment=comment data-test-comment-id=data-test-comment-id}}
+<Spinner @color="blue" data-test-spinner>
 ```
+
+Inside the `Spinner` component template the `data-test-spinner` attribute will
+be applied to the element that has `...attributes` on it, or on the component
+wrapper `div` element if you don't use `tagName = ''`.
+
+
+### Usage with Curly Components
+
+If you still use the old curly invocation syntax for components you can pass
+`data-test-*` arguments to the components and they will automatically be bound
+on the wrapper element too:
 
 ```handlebars
-{{!-- comment-list.hbs --}}
-{{#each comments as |comment|}}
-  {{comment-wrapper comment=comment data-test-comment-id=comment.id}}
-{{/each}}
+{{spinner color="blue" data-test-spinner=true}}
 ```
 
-In this case, to prevent the assertion on the specific `comment-wrapper`
-component, you can specify `supportsDataTestProperties` on the class:
-
-```js
-// comment-wrapper.js
-export default Ember.Component({
-  tagName: '',
-  supportsDataTestProperties: true
-});
-```
-
-`supportsDataTestProperties`, like `data-test-*` properties, will be stripped
-from the build.
-
-#### With splattributes
-Splattributes of angle brackets invocations, introduced in Ember.js 3.4 or
-available through the
-[ember-angle-bracket-invocation-polyfill](https://github.com/rwjblue/ember-angle-bracket-invocation-polyfill)
-for earlier versions of Ember.js, work well with test selectors and tagless
-components.
-
-For instance, we have a `SpecialButton` that wraps a `<button>` element. We can
-then pass arbitrary test selectors through splattributes, as follows:
-
-```js
-// special-button.js
-export default Ember.Component({
-  tagName: '',
-  supportsDataTestProperties: true
-});
-```
-
-```hbs
-{{!-- special-button.hbs --}}
-<button ...attributes>
-  {{yield}}
-</button>
-```
-
-Then
-
-```hbs
-<SpecialButton data-test-description="invite-user">
-  Invite
-</SpecialButton>
-```
-
-will yield
+Please note that the automatic argument binding only works for components based
+on `@ember/component`, but not `@glimmer/component`.
 
 
-```html
-<button data-test-description="invite-user">
-  Invite
-</button>
-```
+### Usage in Ember addons
+
+If you want to use ember-test-selectors in an addon make sure that it appears
+in the `dependencies` section of the `package.json` file, not in the
+`devDependencies`. This ensures that the selectors are also stripped correctly
+even if the app that uses the addon does not use ember-test-selectors itself.
+
 
 Configuration
 ------------------------------------------------------------------------------
@@ -228,13 +123,6 @@ that the attributes will be stripped for production builds, unless the build
 was triggered by `ember test`. That means that if you use
 `ember test --environment=production` the test selectors will still work, but
 for `ember build -prod` they will be stripped out.
-
-Deprecations
-------------------------------------------------------------------------------
-
-The `testSelector` helper was deprecated in [v0.3.7](https://github.com/simplabs/ember-test-selectors/releases/tag/v0.3.7).
-There's a codemod available at https://github.com/lorcan/test-selectors-codemod
-that can help make the necessary transformations to address the deprecation.
 
 License
 ------------------------------------------------------------------------------
