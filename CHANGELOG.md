@@ -1,19 +1,6 @@
 # Changelog
 
-## v3.0.0-beta.2 (2019-04-18)
-
-#### :rocket: Enhancement
-* [#322](https://github.com/simplabs/ember-test-selectors/pull/322) ensure custom tree is still memoized ([@stefanpenner](https://github.com/stefanpenner))
-
-#### :bug: Bug Fix
-* [#359](https://github.com/simplabs/ember-test-selectors/pull/359) Revert "Use `setupPreprocessorRegistry()` hook to register HTMLBars AST plugin" ([@Turbo87](https://github.com/Turbo87))
-
-#### Committers: 2
-- Stefan Penner ([@stefanpenner](https://github.com/stefanpenner))
-- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
-
-
-## v3.0.0-beta.1 (2019-03-16)
+## v3.0.0 (2019-11-22)
 
 #### :boom: Breaking Change
 
@@ -30,16 +17,30 @@ following minimum requirements:
 * [#337](https://github.com/simplabs/ember-test-selectors/pull/337) Drop support for Node.js 4 and 6 ([@Turbo87](https://github.com/Turbo87))
 
 #### :rocket: Enhancement
+* [#322](https://github.com/simplabs/ember-test-selectors/pull/322) ensure custom tree is still memoized ([@stefanpenner](https://github.com/stefanpenner))
 * [#339](https://github.com/simplabs/ember-test-selectors/pull/339) Enable parallel file processing for `ember-cli-babel` ([@Turbo87](https://github.com/Turbo87))
 
+#### :bug: Bug Fix
+* [#359](https://github.com/simplabs/ember-test-selectors/pull/359) Revert "Use `setupPreprocessorRegistry()` hook to register HTMLBars AST plugin" ([@Turbo87](https://github.com/Turbo87))
+
 #### :memo: Documentation
+* [#441](https://github.com/simplabs/ember-test-selectors/pull/441) Simplify and modernize README file ([@Turbo87](https://github.com/Turbo87))
 * [#342](https://github.com/simplabs/ember-test-selectors/pull/342) README: Add Node.js compatibility information ([@Turbo87](https://github.com/Turbo87))
 
 #### :house: Internal
+* [#443](https://github.com/simplabs/ember-test-selectors/pull/443) Replace TravisCI with GitHub Actions ([@Turbo87](https://github.com/Turbo87))
+* [#438](https://github.com/simplabs/ember-test-selectors/pull/438) Update `ember-cli-babel` to v7.12.0 ([@Turbo87](https://github.com/Turbo87))
+* [#437](https://github.com/simplabs/ember-test-selectors/pull/437) Add dependabot config file ([@Turbo87](https://github.com/Turbo87))
+* [#436](https://github.com/simplabs/ember-test-selectors/pull/436) Update locked dependencies ([@Turbo87](https://github.com/Turbo87))
+* [#435](https://github.com/simplabs/ember-test-selectors/pull/435) Remove `ember-cli-eslint` dependency ([@Turbo87](https://github.com/Turbo87))
+* [#434](https://github.com/simplabs/ember-test-selectors/pull/434) Use new QUnit testing APIs ([@Turbo87](https://github.com/Turbo87))
+* [#432](https://github.com/simplabs/ember-test-selectors/pull/432) Replace `ember-cli-qunit` with `ember-qunit` ([@Turbo87](https://github.com/Turbo87))
 * [#340](https://github.com/simplabs/ember-test-selectors/pull/340) Adjust `.npmignore` blacklist ([@Turbo87](https://github.com/Turbo87))
 
-#### Committers: 1
+#### Committers: 3
+- Stefan Penner ([@stefanpenner](https://github.com/stefanpenner))
 - Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+- Yoran Brondsema ([@YoranBrondsema](https://github.com/YoranBrondsema))
 
 
 ## v2.1.0 (2019-03-15)
