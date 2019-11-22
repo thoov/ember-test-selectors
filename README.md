@@ -99,21 +99,21 @@ attribute to a tagless component, for example a tagless wrapper component:
 
 ```js
 // comment-wrapper.js
-export default Ember.Component({
-  tagName: ''
-});
+export default class ComponentWrapper extends Component {
+  tagName = '';
+}
 ```
 
 ```hbs
 {{!-- comment-wrapper.hbs --}}
 Comment:
-{{comment-list-item comment=comment data-test-comment-id=data-test-comment-id}}
+<CommentListItem @comment={{comment}} data-test-comment-id={{data-test-comment-id}} />
 ```
 
 ```handlebars
 {{!-- comment-list.hbs --}}
 {{#each comments as |comment|}}
-  {{comment-wrapper comment=comment data-test-comment-id=comment.id}}
+  <CommentWrapper @comment={{comment}} @data-test-comment-id={{comment.id}} />
 {{/each}}
 ```
 
@@ -122,10 +122,10 @@ component, you can specify `supportsDataTestProperties` on the class:
 
 ```js
 // comment-wrapper.js
-export default Ember.Component({
-  tagName: '',
-  supportsDataTestProperties: true
-});
+export default class ComponentWrapper extends Component {
+  tagName = '';
+  supportsDataTestProperties = true;
+}
 ```
 
 `supportsDataTestProperties`, like `data-test-*` properties, will be stripped
@@ -143,10 +143,9 @@ then pass arbitrary test selectors through splattributes, as follows:
 
 ```js
 // special-button.js
-export default Ember.Component({
-  tagName: '',
-  supportsDataTestProperties: true
-});
+export default class SpecialButton extends Component {
+  tagName = '';
+}
 ```
 
 ```hbs
