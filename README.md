@@ -90,28 +90,6 @@ as data attributes on the `<div>` wrapping the component template:
 </div>
 ```
 
-### Usage in Computed Properties
-
-Instead of assigning `data-test-comment-id` in this example template:
-
-```handlebars
-{{#each comments as |comment|}}
-  {{comment-list-item comment=comment data-test-comment-id=comment.id}}
-{{/each}}
-```
-
-you may also use computed properties on the component:
-
-```js
-export default Ember.Component({
-  comment: null,
-  'data-test-comment-id': Ember.computed.readOnly('comment.id'),
-});
-```
-
-As with `data-test-*` attributes in the templates, these properties, whether
-computed or not, will be removed automatically in production builds.
-
 ### Usage with tagless components
 
 Since tagless components do not have a root element, `data-test-*` attributes
