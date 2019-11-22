@@ -54,28 +54,25 @@ automatically removed from `production` builds:
 
 ```hbs
 <article>
-  <h1 data-test-post-title data-test-resource-id="{{post.id}}">{{post.title}}</h1>
+  <h1 data-test-post-title data-test-resource-id={{post.id}}>{{post.title}}</h1>
   <p>{{post.body}}</p>
+  <LikeButton data-test-like-button />
 </article>
 ```
 
-Once you've done that you can use attribute selectors to look up the elements:
+Once you've done that you can use attribute selectors to look up and interact
+with those elements:
 
 ```js
-// in Acceptance Tests:
+assert.dom('[data-test-post-title]').hasText('Ember is great!');
 
-find('[data-test-post-title]')
-find('[data-test-resource-id="2"]')
-
-// in Component Integration Tests:
-
-this.$('[data-test-post-title]').click()
-this.$('[data-test-resource-id="2"]').click()
+await click('[data-test-like-button]');
 ```
 
 ### Usage in Components
 
-You can also use `data-test-*` attributes on components:
+You can also use `data-test-*` attributes on components in curly component
+invocation:
 
 ```handlebars
 {{comments-list data-test-comments-for=post.id}}
