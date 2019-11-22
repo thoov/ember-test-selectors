@@ -56,7 +56,7 @@ automatically removed from `production` builds:
 <article>
   <h1 data-test-post-title data-test-resource-id={{post.id}}>{{post.title}}</h1>
   <p>{{post.body}}</p>
-  <LikeButton data-test-like-button />
+  <button data-test-like-button>Like</button>
 </article>
 ```
 
@@ -69,108 +69,29 @@ assert.dom('[data-test-post-title]').hasText('Ember is great!');
 await click('[data-test-like-button]');
 ```
 
-### Usage in Components
+### Usage with Components
 
-You can also use `data-test-*` attributes on components in curly component
-invocation:
+You can use the same syntax also for component invocations:
+
+```hbs
+<Spinner @color="blue" data-test-spinner>
+```
+
+Inside the `Spinner` component template the `data-test-spinner` attribute will
+be applied to the element that has `...attributes` on it, or on the component
+wrapper `div` element if you don't use `tagName = ''`.
+
+If you still use the old curly invocation syntax for components you can pass
+`data-test-*` arguments to the components and they will automatically be bound
+on the wrapper element too:
 
 ```handlebars
-{{comments-list data-test-comments-for=post.id}}
+{{spinner color="blue" data-test-spinner=true}}
 ```
 
-These `data-test-*` attributes will be bound automatically and available
-as data attributes on the `<div>` wrapping the component template:
+Please note that this only works for components based on `@ember/component`,
+but not `@glimmer/component`.
 
-```html
-<div id="ember123" data-test-comments-for="42">
-  <!-- comments -->
-</div>
-```
-
-### Usage with tagless components
-
-Since tagless components do not have a root element, `data-test-*` attributes
-passed to them cannot be bound to the DOM. If you try to pass a `data-test-*`
-attribute to a tagless component, or define one in its Javascript class,
-`ember-test-selectors` will throw an assertion error.
-
-However, there are some cases where you might want to pass a `data-test-*`
-attribute to a tagless component, for example a tagless wrapper component:
-
-```js
-// comment-wrapper.js
-export default class ComponentWrapper extends Component {
-  tagName = '';
-}
-```
-
-```hbs
-{{!-- comment-wrapper.hbs --}}
-Comment:
-<CommentListItem @comment={{comment}} data-test-comment-id={{data-test-comment-id}} />
-```
-
-```handlebars
-{{!-- comment-list.hbs --}}
-{{#each comments as |comment|}}
-  <CommentWrapper @comment={{comment}} @data-test-comment-id={{comment.id}} />
-{{/each}}
-```
-
-In this case, to prevent the assertion on the specific `comment-wrapper`
-component, you can specify `supportsDataTestProperties` on the class:
-
-```js
-// comment-wrapper.js
-export default class ComponentWrapper extends Component {
-  tagName = '';
-  supportsDataTestProperties = true;
-}
-```
-
-`supportsDataTestProperties`, like `data-test-*` properties, will be stripped
-from the build.
-
-#### With splattributes
-Splattributes of angle brackets invocations, introduced in Ember.js 3.4 or
-available through the
-[ember-angle-bracket-invocation-polyfill](https://github.com/rwjblue/ember-angle-bracket-invocation-polyfill)
-for earlier versions of Ember.js, work well with test selectors and tagless
-components.
-
-For instance, we have a `SpecialButton` that wraps a `<button>` element. We can
-then pass arbitrary test selectors through splattributes, as follows:
-
-```js
-// special-button.js
-export default class SpecialButton extends Component {
-  tagName = '';
-}
-```
-
-```hbs
-{{!-- special-button.hbs --}}
-<button ...attributes>
-  {{yield}}
-</button>
-```
-
-Then
-
-```hbs
-<SpecialButton data-test-description="invite-user">
-  Invite
-</SpecialButton>
-```
-
-will yield
-
-
-```html
-<button data-test-description="invite-user">
-  Invite
-</button>
-```
 
 ### Usage in Ember addons
 
