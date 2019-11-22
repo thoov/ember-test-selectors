@@ -1,3 +1,5 @@
+.dependabot/
+.github/
 /bower_components
 /config/
 /dist
@@ -5,6 +7,7 @@
 /node-tests
 /tmp
 **/.gitkeep
+*.tgz
 .bowerrc
 .editorconfig
 .ember-cli
