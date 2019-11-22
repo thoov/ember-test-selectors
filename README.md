@@ -90,17 +90,6 @@ as data attributes on the `<div>` wrapping the component template:
 </div>
 ```
 
-You can also use boolean attributes, but make sure it is the first parameter
-as this makes use of Ember's positional params system.
-
-```handlebars
-{{! valid }}
-{{comments-list data-test-comments post=post}}
-
-{{! compiler error }}
-{{comments-list post=post data-test-comments}}
-```
-
 ### Usage in Computed Properties
 
 Instead of assigning `data-test-comment-id` in this example template:
