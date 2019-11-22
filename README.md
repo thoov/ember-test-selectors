@@ -173,6 +173,14 @@ will yield
 </button>
 ```
 
+### Usage in Ember addons
+
+If you want to use ember-test-selectors in an addon make sure that it appears
+in the `dependencies` section of the `package.json` file, not in the
+`devDependencies`. This ensures that the selectors are also stripped correctly
+even if the app that uses the addon does not use ember-test-selectors itself.
+
+
 Configuration
 ------------------------------------------------------------------------------
 
