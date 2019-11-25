@@ -14,7 +14,7 @@ function testFixture(name) {
     let fixturePath = `${__dirname}/fixtures/${name}/fixture.js`;
     let expectedPath = `${__dirname}/fixtures/${name}/expected.js`;
 
-    let expected = fs.readFileSync(expectedPath).toString();
+    let expected = fs.readFileSync(expectedPath, 'utf8').replace(/\r\n/g, '\n');
     let result = babel5.transformFileSync(fixturePath, {
       plugins: [StripDataTestPropertiesPlugin5],
     });
@@ -26,7 +26,7 @@ function testFixture(name) {
     let fixturePath = `${__dirname}/fixtures/${name}/fixture.js`;
     let expectedPath = `${__dirname}/fixtures/${name}/expected6.js`;
 
-    let expected = fs.readFileSync(expectedPath).toString();
+    let expected = fs.readFileSync(expectedPath, 'utf8').replace(/\r\n/g, '\n');
 
     let result = babel6.transformFileSync(fixturePath, {
       plugins: [StripDataTestPropertiesPlugin6],
@@ -39,7 +39,7 @@ function testFixture(name) {
     let fixturePath = `${__dirname}/fixtures/${name}/fixture.js`;
     let expectedPath = `${__dirname}/fixtures/${name}/expected7.js`;
 
-    let expected = fs.readFileSync(expectedPath).toString();
+    let expected = fs.readFileSync(expectedPath, 'utf8').replace(/\r\n/g, '\n');
 
     let result = babel7.transformFileSync(fixturePath, {
       plugins: [StripDataTestPropertiesPlugin6],
