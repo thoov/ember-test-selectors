@@ -55,7 +55,7 @@
     "qunit-dom": "^0.9.1"
   },
   "engines": {
-    "node": "8.* || >= 10.*"
+    "node": "10.* || >= 12.*"
   },
   "changelog": {
     "repo": "simplabs/ember-test-selectors",
