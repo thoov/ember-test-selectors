@@ -1,5 +1,21 @@
 # Changelog
 
+## v4.0.0 (2020-02-17)
+
+#### :boom: Breaking Change
+* [#489](https://github.com/simplabs/ember-test-selectors/pull/489) Drop support for Ember releases before v3.0.0 ([@Turbo87](https://github.com/Turbo87))
+* [#488](https://github.com/simplabs/ember-test-selectors/pull/488) Drop support for Node 8 ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#463](https://github.com/simplabs/ember-test-selectors/pull/463) testem: Increase `browser_start_timeout` ([@Turbo87](https://github.com/Turbo87))
+* [#446](https://github.com/simplabs/ember-test-selectors/pull/446) CI: Run main test suite on Windows too ([@Turbo87](https://github.com/Turbo87))
+* [#445](https://github.com/simplabs/ember-test-selectors/pull/445) Update ignore files ([@Turbo87](https://github.com/Turbo87))
+* [#444](https://github.com/simplabs/ember-test-selectors/pull/444) CI: Fix `release` workflow ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v3.0.0 (2019-11-22)
 
 #### :boom: Breaking Change
