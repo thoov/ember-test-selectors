@@ -68,6 +68,10 @@
     }
   },
   "ember-addon": {
+    "before": [
+      "ember-cli-htmlbars",
+      "ember-cli-htmlbars-inline-precompile"
+    ],
     "configPath": "tests/dummy/config",
     "versionCompatibility": {
       "ember": ">=3"
