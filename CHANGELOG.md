@@ -1,5 +1,14 @@
 # Changelog
 
+## v4.1.0 (2020-05-07)
+
+#### :rocket: Enhancement
+* [#521](https://github.com/simplabs/ember-test-selectors/pull/521) Ensure test selector stripping works for inline template compilation and co-located components ([@rwjblue](https://github.com/rwjblue))
+
+#### Committers: 2
+- Robert Jackson ([@rwjblue](https://github.com/rwjblue))
+
+
 ## v4.0.0 (2020-02-17)
 
 #### :boom: Breaking Change
