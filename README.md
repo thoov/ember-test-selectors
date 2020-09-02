@@ -33,9 +33,9 @@ More information on why that is useful are available on our
 Compatibility
 ------------------------------------------------------------------------------
 
-- Ember 2.16 or above
-- Ember CLI 2.14 or above
-- Node.js 8 or above
+- Ember 3.8 or above
+- Ember CLI 3.8 or above
+- Node.js 10 or above
 
 
 Installation
