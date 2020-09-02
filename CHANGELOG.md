@@ -1,5 +1,25 @@
 # Changelog
 
+## v5.0.0 (2020-09-02)
+
+This release drops support for Ember.js versions below v3.8 due to an update
+of ember-cli-htmlbars which did the same. Other than that, no further breaking
+changes are contained in the release.
+
+#### :boom: Breaking Change
+* [#527](https://github.com/simplabs/ember-test-selectors/pull/527) Bump ember-cli-htmlbars from 4.3.1 to 5.1.2 ([@marcoow](https://github.com/marcoow))
+
+#### :rocket: Enhancement
+* [#587](https://github.com/simplabs/ember-test-selectors/pull/587) bind-data-test-attributes: Avoid deprecated `getWithDefault()` call ([@Turbo87](https://github.com/Turbo87))
+
+#### :memo: Documentation
+* [#588](https://github.com/simplabs/ember-test-selectors/pull/588) Update Node.js and Ember.js support documentation ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 2
+- Marco Otte-Witte ([@marcoow](https://github.com/marcoow))
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
+
 ## v4.1.0 (2020-05-07)
 
 #### :rocket: Enhancement
