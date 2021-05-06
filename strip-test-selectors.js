@@ -8,7 +8,7 @@ function isTestSelector(attribute) {
   return TEST_SELECTOR_PREFIX.test(attribute);
 }
 
-function transform() {
+module.exports = function() {
   return {
     name: 'strip-test-selectors',
 
@@ -28,6 +28,4 @@ function transform() {
       },
     }
   };
-}
-
-module.exports = transform;
+};
