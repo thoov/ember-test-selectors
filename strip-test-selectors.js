@@ -8,34 +8,24 @@ function isTestSelector(attribute) {
   return TEST_SELECTOR_PREFIX.test(attribute);
 }
 
-function StripTestSelectorsTransform() {
-  this.syntax = null;
-}
+module.exports = function() {
+  return {
+    name: 'strip-test-selectors',
 
-StripTestSelectorsTransform.prototype.transform = function(ast) {
-  let walker = new this.syntax.Walker();
+    visitor: {
+      ElementNode(node) {
+        node.attributes = node.attributes.filter(attribute => !isTestSelector(attribute.name));
+      },
 
-  walker.visit(ast, function(node) {
-    if (node.type === 'ElementNode') {
-      node.attributes = node.attributes.filter(function(attribute) {
-        return !isTestSelector(attribute.name);
-      });
-    } else if (node.type === 'MustacheStatement' || node.type === 'BlockStatement') {
-      if ('sexpr' in node) {
-        node = node.sexpr;
-      }
+      MustacheStatement(node) {
+        node.params = node.params.filter(param => !isTestSelector(param.original));
+        node.hash.pairs = node.hash.pairs.filter(pair => !isTestSelector(pair.key));
+      },
 
-      node.params = node.params.filter(function(param) {
-        return !isTestSelector(param.original);
-      });
-
-      node.hash.pairs = node.hash.pairs.filter(function(pair) {
-        return !isTestSelector(pair.key);
-      });
+      BlockStatement(node) {
+        node.params = node.params.filter(param => !isTestSelector(param.original));
+        node.hash.pairs = node.hash.pairs.filter(pair => !isTestSelector(pair.key));
+      },
     }
-  });
-
-  return ast;
+  };
 };
-
-module.exports = StripTestSelectorsTransform;
