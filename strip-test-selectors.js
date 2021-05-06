@@ -27,16 +27,22 @@ function StripTestSelectorsTransform() {
 }
 
 StripTestSelectorsTransform.prototype.transform = function(ast) {
-  let walker = new this.syntax.Walker();
+  let { traverse } = this.syntax;
 
-  walker.visit(ast, function(node) {
-    if (node.type === 'ElementNode') {
+  traverse(ast, {
+    ElementNode(node) {
       node.attributes = node.attributes.filter(function(attribute) {
         return !isTestSelector(attribute.name);
       });
-    } else if (node.type === 'MustacheStatement' || node.type === 'BlockStatement') {
+    },
+
+    MustacheStatement(node) {
       stripTestSelectors(node);
-    }
+    },
+
+    BlockStatement(node) {
+      stripTestSelectors(node);
+    },
   });
 
   return ast;
