@@ -8,6 +8,20 @@ function isTestSelector(attribute) {
   return TEST_SELECTOR_PREFIX.test(attribute);
 }
 
+function stripTestSelectors(node) {
+  if ('sexpr' in node) {
+    node = node.sexpr;
+  }
+
+  node.params = node.params.filter(function(param) {
+    return !isTestSelector(param.original);
+  });
+
+  node.hash.pairs = node.hash.pairs.filter(function(pair) {
+    return !isTestSelector(pair.key);
+  });
+}
+
 function StripTestSelectorsTransform() {
   this.syntax = null;
 }
@@ -21,17 +35,7 @@ StripTestSelectorsTransform.prototype.transform = function(ast) {
         return !isTestSelector(attribute.name);
       });
     } else if (node.type === 'MustacheStatement' || node.type === 'BlockStatement') {
-      if ('sexpr' in node) {
-        node = node.sexpr;
-      }
-
-      node.params = node.params.filter(function(param) {
-        return !isTestSelector(param.original);
-      });
-
-      node.hash.pairs = node.hash.pairs.filter(function(pair) {
-        return !isTestSelector(pair.key);
-      });
+      stripTestSelectors(node);
     }
   });
 
