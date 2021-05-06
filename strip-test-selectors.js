@@ -18,30 +18,26 @@ function stripTestSelectors(node) {
   });
 }
 
-function StripTestSelectorsTransform() {
-  this.syntax = null;
+function transform() {
+  return {
+    name: 'strip-test-selectors',
+
+    visitor: {
+      ElementNode(node) {
+        node.attributes = node.attributes.filter(function(attribute) {
+          return !isTestSelector(attribute.name);
+        });
+      },
+
+      MustacheStatement(node) {
+        stripTestSelectors(node);
+      },
+
+      BlockStatement(node) {
+        stripTestSelectors(node);
+      },
+    }
+  };
 }
 
-StripTestSelectorsTransform.prototype.transform = function(ast) {
-  let { traverse } = this.syntax;
-
-  traverse(ast, {
-    ElementNode(node) {
-      node.attributes = node.attributes.filter(function(attribute) {
-        return !isTestSelector(attribute.name);
-      });
-    },
-
-    MustacheStatement(node) {
-      stripTestSelectors(node);
-    },
-
-    BlockStatement(node) {
-      stripTestSelectors(node);
-    },
-  });
-
-  return ast;
-};
-
-module.exports = StripTestSelectorsTransform;
+module.exports = transform;
