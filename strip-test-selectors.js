@@ -9,10 +9,6 @@ function isTestSelector(attribute) {
 }
 
 function stripTestSelectors(node) {
-  if ('sexpr' in node) {
-    node = node.sexpr;
-  }
-
   node.params = node.params.filter(function(param) {
     return !isTestSelector(param.original);
   });
