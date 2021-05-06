@@ -9,13 +9,8 @@ function isTestSelector(attribute) {
 }
 
 function stripTestSelectors(node) {
-  node.params = node.params.filter(function(param) {
-    return !isTestSelector(param.original);
-  });
-
-  node.hash.pairs = node.hash.pairs.filter(function(pair) {
-    return !isTestSelector(pair.key);
-  });
+  node.params = node.params.filter(param => !isTestSelector(param.original));
+  node.hash.pairs = node.hash.pairs.filter(pair => !isTestSelector(pair.key));
 }
 
 function transform() {
@@ -24,9 +19,7 @@ function transform() {
 
     visitor: {
       ElementNode(node) {
-        node.attributes = node.attributes.filter(function(attribute) {
-          return !isTestSelector(attribute.name);
-        });
+        node.attributes = node.attributes.filter(attribute => !isTestSelector(attribute.name));
       },
 
       MustacheStatement(node) {
