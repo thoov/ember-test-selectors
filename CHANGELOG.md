@@ -1,5 +1,17 @@
 # Changelog
 
+## v5.1.0 (2021-05-07)
+
+#### :rocket: Enhancement
+* [#700](https://github.com/simplabs/ember-test-selectors/pull/700) Convert class based template compilation plugin to functional style ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#704](https://github.com/simplabs/ember-test-selectors/pull/704) Add `release-it` to simplify the release process ([@Turbo87](https://github.com/Turbo87))
+* [#701](https://github.com/simplabs/ember-test-selectors/pull/701) dummy: Add missing `this.` prefixes ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v5.0.0 (2020-09-02)
 
 This release drops support for Ember.js versions below v3.8 due to an update
