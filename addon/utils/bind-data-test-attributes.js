@@ -37,7 +37,9 @@ export default function bindDataTestAttributes(component) {
     attributeBindings = attributeBindings.slice();
   }
 
-  dataTestProperties.forEach(it => attributeBindings.push(it));
+  for (let prop of dataTestProperties) {
+    attributeBindings.push(prop);
+  }
 
   try {
     component.set('attributeBindings', attributeBindings);
