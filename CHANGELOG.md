@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.2.0 (2021-05-14)
+
+#### :rocket: Enhancement
+* [#713](https://github.com/simplabs/ember-test-selectors/pull/713) Deprecate automatic attribute bindings ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v5.1.0 (2021-05-07)
 
 #### :rocket: Enhancement
