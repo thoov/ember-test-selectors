@@ -38,7 +38,9 @@ export default function bindDataTestAttributes(component) {
   }
 
   for (let prop of dataTestProperties) {
-    attributeBindings.push(prop);
+    if (attributeBindings.indexOf(prop) === -1) {
+      attributeBindings.push(prop);
+    }
   }
 
   try {
