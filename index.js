@@ -25,6 +25,8 @@ module.exports = {
     } else {
       this._stripTestSelectors = !app.tests;
     }
+
+    this._shouldPatchClassicComponent = !this._stripTestSelectors && addonOptions.patchClassicComponent !== false;
   },
 
   _setupPreprocessorRegistry(registry) {
@@ -73,7 +75,7 @@ module.exports = {
       this._registeredWithBabel = true;
     }
 
-    if (!this._stripTestSelectors) {
+    if (this._shouldPatchClassicComponent) {
       host.import('vendor/ember-test-selectors/patch-component.js');
     }
   },
@@ -89,7 +91,7 @@ module.exports = {
 
   treeForAddon() {
     // remove our "addon" folder from the build if we're stripping test selectors
-    if (!this._stripTestSelectors) {
+    if (this._shouldPatchClassicComponent) {
       return this._super.treeForAddon.apply(this, arguments);
     }
   },
