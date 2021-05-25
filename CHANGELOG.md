@@ -1,5 +1,15 @@
 # Changelog
 
+## v5.3.0 (2021-05-25)
+
+#### :rocket: Enhancement
+* [#720](https://github.com/simplabs/ember-test-selectors/pull/720) Resolve class based transform deprecation ([@chancancode](https://github.com/chancancode))
+* [#721](https://github.com/simplabs/ember-test-selectors/pull/721) Add `patchClassicComponent` option to avoid deprecation warnings ([@mydea](https://github.com/mydea))
+
+#### Committers: 2
+- Francesco Novy ([@mydea](https://github.com/mydea))
+- Godfrey Chan ([@chancancode](https://github.com/chancancode))
+
 ## v5.2.0 (2021-05-14)
 
 #### :rocket: Enhancement
