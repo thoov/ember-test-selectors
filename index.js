@@ -112,8 +112,8 @@ module.exports = {
     return {
       name: 'strip-test-selectors',
       plugin: StripTestSelectorsTransform,
-      baseDir() { return __dirname; },
-      cacheKey() { return 'strip-test-selectors'; },
+      baseDir: StripTestSelectorsTransform.baseDir,
+      cacheKey: StripTestSelectorsTransform.cacheKey,
     };
   },
 
@@ -123,8 +123,8 @@ module.exports = {
     return {
       name: 'transform-test-selector-params-to-hash-pairs',
       plugin: TransformTestSelectorParamsToHashPairs,
-      baseDir() { return __dirname; },
-      cacheKey() { return 'transform-test-selector-params-to-hash-pairs'; },
+      baseDir: TransformTestSelectorParamsToHashPairs.baseDir,
+      cacheKey: TransformTestSelectorParamsToHashPairs.cacheKey,
     };
   },
 };

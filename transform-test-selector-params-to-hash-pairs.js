@@ -44,3 +44,11 @@ module.exports = function(env) {
     },
   };
 };
+
+module.exports.baseDir = function() {
+  return __dirname;
+};
+
+module.exports.cacheKey = function() {
+  return 'transform-test-selector-params-to-hash-pairs';
+};
