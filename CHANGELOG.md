@@ -1,5 +1,13 @@
 # Changelog
 
+## v5.4.0 (2021-06-24)
+
+#### :rocket: Enhancement
+* [#742](https://github.com/simplabs/ember-test-selectors/pull/742) Fix caching warnings when running under Embroider ([@rwjblue](https://github.com/rwjblue))
+
+#### Committers: 1
+- Robert Jackson ([@rwjblue](https://github.com/rwjblue))
+
 ## v5.3.0 (2021-05-25)
 
 #### :rocket: Enhancement
