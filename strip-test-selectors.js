@@ -29,3 +29,11 @@ module.exports = function() {
     }
   };
 };
+
+module.exports.baseDir = function() {
+  return __dirname;
+};
+
+module.exports.cacheKey = function() {
+  return 'strip-test-selectors';
+};
