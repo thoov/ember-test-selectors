@@ -3,6 +3,7 @@
 /* eslint-env node */
 
 let TEST_SELECTOR_PREFIX = /data-test-.*/;
+let shownDeprecationWarning = false;
 
 function isTestSelectorParam(param) {
   return param.type === 'PathExpression'
@@ -22,6 +23,18 @@ module.exports = function(env) {
     node.params.forEach(function(param) {
       if (isTestSelectorParam(param)) {
         testSelectorParams.push(param);
+        if (!shownDeprecationWarning) {
+          // eslint-disable-next-line no-console
+          console.warn(
+            '\n\n[ember-test-selectors] DEPRECATION: Using data-test ' +
+            'parameters without values in curly component invocations is ' +
+            'deprecated. You can use https://github.com/simplabs/ember-test-selectors-params-codemod ' +
+            'to migrate away from this pattern. See https://github.com/simplabs/ember-test-selectors/issues/151 ' +
+            'for more details.\n'
+          );
+
+          shownDeprecationWarning = true;
+        }
       } else {
         otherParams.push(param);
       }
