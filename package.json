@@ -81,12 +81,5 @@
     "versionCompatibility": {
       "ember": ">=3.8"
     }
-  },
-  "greenkeeper": {
-    "ignore": [
-      "babel-core",
-      "eslint-plugin-ember",
-      "eslint-plugin-qunit"
-    ]
   }
 }
