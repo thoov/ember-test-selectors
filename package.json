@@ -1,6 +1,6 @@
 {
   "name": "ember-test-selectors",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "Enabling better Test selectors in Ember.js applications.",
   "keywords": [
     "ember-addon"

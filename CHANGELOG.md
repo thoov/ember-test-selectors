@@ -1,5 +1,20 @@
 # Changelog
 
+## v5.5.0 (2021-07-02)
+
+#### :rocket: Enhancement
+* [#751](https://github.com/simplabs/ember-test-selectors/pull/751) Deprecate `TransformTestSelectorParamsToHashPairs` transform ([@Turbo87](https://github.com/Turbo87))
+* [#752](https://github.com/simplabs/ember-test-selectors/pull/752) Deprecate ember-cli-babel v5.x support ([@Turbo87](https://github.com/Turbo87))
+
+#### :memo: Documentation
+* [#755](https://github.com/simplabs/ember-test-selectors/pull/755) README: Remove outdated EmberMap video ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#753](https://github.com/simplabs/ember-test-selectors/pull/753) Remove obsolete `greenkeeper` configuration ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v5.4.0 (2021-06-24)
 
 #### :rocket: Enhancement
