@@ -21,7 +21,6 @@
     "test": "npm run test:keep && npm run test:strip",
     "test:all": "ember try:each",
     "test:keep": "ember test",
-    "pretest:node": "multidep node-tests/multidep.json",
     "test:node": "mocha node-tests",
     "test:strip": "STRIP_TEST_SELECTORS=true ember test"
   },
@@ -53,7 +52,6 @@
     "lerna-changelog": "1.0.1",
     "loader.js": "4.7.0",
     "mocha": "8.4.0",
-    "multidep": "2.0.2",
     "qunit": "2.16.0",
     "qunit-dom": "1.6.0",
     "release-it": "14.10.0",
