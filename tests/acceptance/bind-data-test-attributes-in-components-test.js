@@ -1,9 +1,8 @@
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { setupApplicationTest } from 'ember-qunit';
 import { visit } from '@ember/test-helpers';
 
 import config from 'dummy/config/environment';
-import { hasPositionalParams } from 'dummy/version-checks';
 
 if (!config.stripTestSelectors) {
 
@@ -52,22 +51,6 @@ if (!config.stripTestSelectors) {
 
     test('it binds data-test-* attributes with boolean values on components', function(assert) {
       assert.dom('.test7 div[data-test-with-boolean-value]').exists('data-test-with-boolean-value exists');
-    });
-
-    test('it binds data-test-* attributes without values on components', function(assert) {
-      assert.dom('.test8 div[data-test-without-value]').exists('data-test-without-value exists');
-    });
-
-    test('it binds data-test-* attributes without values on block components', function(assert) {
-      assert.dom('.test9 div[data-test-without-value]').exists('data-test-without-value exists');
-    });
-
-    (hasPositionalParams ? test : skip)('it leaves data-test attribute without value untouched on components', function(assert) {
-      assert.dom('.test10 div[data-test]').doesNotExist('data-test does not exists');
-    });
-
-    test('it transforms data-test params to hash pairs on components', function(assert) {
-      assert.dom('.test11 div[data-test-something]').exists('data-test-something exists');
     });
 
     test('it binds data-test attributes on {{link-to}} components', function(assert) {
