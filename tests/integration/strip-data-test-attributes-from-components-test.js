@@ -1,42 +1,14 @@
-import { module, test, skip } from 'qunit';
+import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
 import { render } from '@ember/test-helpers';
 import hbs from 'htmlbars-inline-precompile';
 
 import config from 'dummy/config/environment';
-import {
-  hasReliablePositionalParams,
-  hasEmberVersion
-} from 'dummy/version-checks';
 
 module('StripTestSelectorsTransform plugin', function(hooks) {
   setupRenderingTest(hooks);
 
   if (config.stripTestSelectors) {
-    (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with single positional params', async function(assert) {
-      await render(hbs`{{print-test-attributes data-test-should-not-be}}`);
-
-      assert.dom('.data-test-positional-params').hasText(hasEmberVersion(2, 10) || !hasEmberVersion(2, 3) ? '' : '0', 'there should be no params');
-    });
-
-    (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with positional params data-test-* as first param', async function(assert) {
-      await render(hbs`{{print-test-attributes data-test-should-not-be "param1"}}`);
-
-      assert.dom('.data-test-positional-params').hasText('1', 'there should be only one param');
-    });
-
-    (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with multiple positional params', async function(assert) {
-      await render(hbs`{{print-test-attributes "param1" data-test-should-not-be}}`);
-
-      assert.dom('.data-test-positional-params').hasText('1', 'there should be only one param');
-    });
-
-    (hasReliablePositionalParams ? test : skip)('it strips data-test-* attributes from components with block and multiple positional params', async function(assert) {
-      await render(hbs`{{#print-test-attributes "param1" data-test-should-not-be}}{{/print-test-attributes}}`);
-
-      assert.dom('.data-test-positional-params').hasText('1', 'there should be only one param');
-    });
-
     test('it strips data-test-* attributes from components', async function(assert) {
       await render(hbs`{{print-test-attributes data-test-first="foobar"}}`);
 

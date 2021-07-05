@@ -30,16 +30,16 @@ module.exports = {
   },
 
   _setupPreprocessorRegistry(registry) {
-    let pluginFnName = this._stripTestSelectors ? '_buildStripPlugin' : '_buildHashParamPlugin';
+    if (this._stripTestSelectors) {
+      let plugin = this._buildStripPlugin();
+      plugin.parallelBabel = {
+        requireFile: __filename,
+        buildUsing: '_buildStripPlugin',
+        params: {},
+      };
 
-    let plugin = this[pluginFnName]();
-    plugin.parallelBabel = {
-      requireFile: __filename,
-      buildUsing: pluginFnName,
-      params: {},
-    };
-
-    registry.add('htmlbars-ast-plugin', plugin);
+      registry.add('htmlbars-ast-plugin', plugin);
+    }
   },
 
   included(appOrParent) {
@@ -117,17 +117,6 @@ module.exports = {
       plugin: StripTestSelectorsTransform,
       baseDir: StripTestSelectorsTransform.baseDir,
       cacheKey: StripTestSelectorsTransform.cacheKey,
-    };
-  },
-
-  _buildHashParamPlugin() {
-    let TransformTestSelectorParamsToHashPairs = require('./transform-test-selector-params-to-hash-pairs');
-
-    return {
-      name: 'transform-test-selector-params-to-hash-pairs',
-      plugin: TransformTestSelectorParamsToHashPairs,
-      baseDir: TransformTestSelectorParamsToHashPairs.baseDir,
-      cacheKey: TransformTestSelectorParamsToHashPairs.cacheKey,
     };
   },
 };
