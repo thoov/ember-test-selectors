@@ -59,14 +59,7 @@ module.exports = {
 
       appOrParent.options = appOrParent.options || {};
 
-      if (checker.satisfies('^5.0.0')) {
-        appOrParent.options.babel = appOrParent.options.babel || {};
-        appOrParent.options.babel.plugins = appOrParent.options.babel.plugins || [];
-        appOrParent.options.babel.plugins.push(require('./strip-data-test-properties-plugin'));
-
-        this.ui.writeWarnLine('[ember-test-selectors] DEPRECATION: Using ember-cli-babel v5 with ember-test-selectors ' +
-          'is deprecated. Please make sure to update your ember-cli-babel version.');
-      } else if (checker.satisfies('^6.0.0-beta.1') || checker.satisfies('^7.0.0')) {
+      if (checker.satisfies('^6.0.0-beta.1') || checker.satisfies('^7.0.0')) {
         appOrParent.options.babel6 = appOrParent.options.babel6 || {};
         appOrParent.options.babel6.plugins = appOrParent.options.babel6.plugins || [];
         appOrParent.options.babel6.plugins.push(require.resolve('./strip-data-test-properties-plugin6'));
