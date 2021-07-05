@@ -1,5 +1,20 @@
 # Changelog
 
+## v6.0.0 (2021-07-05)
+
+#### :boom: Breaking Change
+* [#764](https://github.com/simplabs/ember-test-selectors/pull/764) Remove deprecated automatic attribute binding ([@Turbo87](https://github.com/Turbo87))
+* [#756](https://github.com/simplabs/ember-test-selectors/pull/756) Drop support for Node.js 10 ([@Turbo87](https://github.com/Turbo87))
+* [#757](https://github.com/simplabs/ember-test-selectors/pull/757) Remove support for ember-cli-babel v5 ([@Turbo87](https://github.com/Turbo87))
+* [#759](https://github.com/simplabs/ember-test-selectors/pull/759) Stop testing on non-LTS Ember releases before v3.24 ([@Turbo87](https://github.com/Turbo87))
+* [#758](https://github.com/simplabs/ember-test-selectors/pull/758) Remove deprecated `TransformTestSelectorParamsToHashPairs` transform ([@Turbo87](https://github.com/Turbo87))
+
+#### :house: Internal
+* [#763](https://github.com/simplabs/ember-test-selectors/pull/763) Remove `multidep` setup ([@Turbo87](https://github.com/Turbo87))
+
+#### Committers: 1
+- Tobias Bieniek ([@Turbo87](https://github.com/Turbo87))
+
 ## v5.5.0 (2021-07-02)
 
 #### :rocket: Enhancement
