@@ -26,7 +26,10 @@ module.exports = {
       this._stripTestSelectors = !app.tests;
     }
 
-    this._shouldPatchClassicComponent = !this._stripTestSelectors && addonOptions.patchClassicComponent !== false;
+    if ('patchClassicComponent' in addonOptions) {
+      ui.writeDeprecateLine('[ember-test-selectors] The `patchClassicComponent` option is obsolete. ' +
+        'You can remove it from your `ember-cli-build.js` file.', false);
+    }
   },
 
   _setupPreprocessorRegistry(registry) {
@@ -70,10 +73,6 @@ module.exports = {
 
       this._registeredWithBabel = true;
     }
-
-    if (this._shouldPatchClassicComponent) {
-      host.import('vendor/ember-test-selectors/patch-component.js');
-    }
   },
 
   cacheKeyForTree(treeType) {
@@ -82,13 +81,6 @@ module.exports = {
       return cacheKeyForTree('addon', this, [this._stripTestSelectors]);
     } else {
       return cacheKeyForTree(treeType, this);
-    }
-  },
-
-  treeForAddon() {
-    // remove our "addon" folder from the build if we're stripping test selectors
-    if (this._shouldPatchClassicComponent) {
-      return this._super.treeForAddon.apply(this, arguments);
     }
   },
 
