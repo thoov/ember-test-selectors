@@ -20,9 +20,6 @@ Features
 - Removes properties starting with `data-test-` from your JS objects like
   component classes for production builds
 
-- Automatically binds properties starting with `data-test-` on all components
-  for development/testing builds
-
 More information on why that is useful are available on our
 [blog](http://simplabs.com/blog/2016/03/04/ember-test-selectors.html)!
 
@@ -77,20 +74,6 @@ You can use the same syntax also for component invocations:
 Inside the `Spinner` component template the `data-test-spinner` attribute will
 be applied to the element that has `...attributes` on it, or on the component
 wrapper `div` element if you don't use `tagName = ''`.
-
-
-### Usage with Curly Components
-
-If you still use the old curly invocation syntax for components you can pass
-`data-test-*` arguments to the components and they will automatically be bound
-on the wrapper element too:
-
-```handlebars
-{{spinner color="blue" data-test-spinner=true}}
-```
-
-Please note that the automatic argument binding only works for components based
-on `@ember/component`, but not `@glimmer/component`.
 
 
 ### Usage in Ember addons
