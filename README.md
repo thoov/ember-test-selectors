@@ -1,14 +1,6 @@
 ember-test-selectors
 ==============================================================================
 
-[![Latest NPM release][npm-badge]][npm-badge-url]
-[![TravisCI Build Status][travis-badge]][travis-badge-url]
-
-[npm-badge]: https://img.shields.io/npm/v/ember-test-selectors.svg
-[npm-badge-url]: https://www.npmjs.com/package/ember-test-selectors
-[travis-badge]: https://img.shields.io/travis/simplabs/ember-test-selectors/master.svg?label=TravisCI
-[travis-badge-url]: https://travis-ci.org/simplabs/ember-test-selectors
-
 Enabling better element selectors in [Ember.js](http://emberjs.com) tests
 
 Features
