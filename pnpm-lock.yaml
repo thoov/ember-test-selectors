@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@babel/core': 7.16.0
+  '@ember/optional-features': 2.0.0
   '@ember/test-helpers': 2.6.0
   broccoli-stew: 3.0.0
   calculate-cache-key-for-tree: ^2.0.0
@@ -38,6 +39,7 @@ dependencies:
 
 devDependencies:
   '@babel/core': 7.16.0
+  '@ember/optional-features': 2.0.0
   '@ember/test-helpers': 2.6.0_@babel+core@7.16.0
   broccoli-stew: 3.0.0
   ember-cli: 3.28.4
@@ -1187,6 +1189,18 @@ packages:
 
   /@ember/edition-utils/1.2.0:
     resolution: {integrity: sha512-VmVq/8saCaPdesQmftPqbFtxJWrzxNGSQ+e8x8LLe3Hjm36pJ04Q8LeORGZkAeOhldoUX9seLGmSaHeXkIqoog==}
+    dev: true
+
+  /@ember/optional-features/2.0.0:
+    resolution: {integrity: sha512-4gkvuGRYfpAh1nwAz306cmMeC1mG7wxZnbsBZ09mMaMX/W7IyKOKc/38JwrDPUFUalmNEM7q7JEPcmew2M3Dog==}
+    engines: {node: 10.* || 12.* || >= 14}
+    dependencies:
+      chalk: 4.1.2
+      ember-cli-version-checker: 5.1.2
+      glob: 7.2.0
+      inquirer: 7.3.3
+      mkdirp: 1.0.4
+      silent-error: 1.1.1
     dev: true
 
   /@ember/test-helpers/2.6.0_@babel+core@7.16.0:
@@ -6500,6 +6514,25 @@ packages:
       through: 2.3.8
     dev: true
 
+  /inquirer/7.3.3:
+    resolution: {integrity: sha512-JG3eIAj5V9CwcGvuOmoo6LB9kbAYT8HXffUl6memuszlwDC/qvFAJw49XJ5NROSFNPxp3iQg1GqkFhaY/CR0IA==}
+    engines: {node: '>=8.0.0'}
+    dependencies:
+      ansi-escapes: 4.3.2
+      chalk: 4.1.2
+      cli-cursor: 3.1.0
+      cli-width: 3.0.0
+      external-editor: 3.1.0
+      figures: 3.2.0
+      lodash: 4.17.21
+      mute-stream: 0.0.8
+      run-async: 2.4.1
+      rxjs: 6.6.7
+      string-width: 4.2.3
+      strip-ansi: 6.0.1
+      through: 2.3.8
+    dev: true
+
   /inquirer/8.1.5:
     resolution: {integrity: sha512-G6/9xUqmt/r+UvufSyrPpt84NYwhKZ9jLsgMbQzlx804XErNupor8WQdBnBRrXmBfTPpuwf1sV+ss2ovjgdXIg==}
     engines: {node: '>=8.0.0'}
@@ -11102,7 +11135,7 @@ packages:
   /wide-align/1.1.5:
     resolution: {integrity: sha512-eDMORYaPNZ4sQIuuYPDHdQvf4gyCF9rEEV/yPxGfwPkRodwEgiMUUXTx/dex+Me0wxx53S+NgUHaP7y3MGlDmg==}
     dependencies:
-      string-width: 1.0.2
+      string-width: 4.2.3
     dev: true
 
   /widest-line/3.1.0:
