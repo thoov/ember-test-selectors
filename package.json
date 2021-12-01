@@ -71,6 +71,9 @@
       "internal": ":house: Internal"
     }
   },
+  "ember": {
+    "edition": "octane"
+  },
   "ember-addon": {
     "before": [
       "ember-cli-htmlbars",
